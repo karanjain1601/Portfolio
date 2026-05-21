@@ -1,0 +1,45 @@
+- slug: portfolio-website
+  title: This Portfolio
+  summary: A config-driven portfolio with a RAG-powered chatbot.
+  description: |
+    Built with Next.js 15, TypeScript, Tailwind CSS, and Framer Motion.
+    All content is driven by YAML files and validated by Zod schemas.
+    Features a Groq-powered chatbot with retrieval over project notes.
+  tech: [Next.js, TypeScript, Tailwind, Groq, Supabase]
+  role: Solo
+  period: "2026"
+  links:
+    repo: https://github.com/yourhandle/portfolio
+  cover: /projects/portfolio.png
+  featured: true
+
+- slug: ai-task-manager
+  title: AI Task Manager
+  summary: A productivity app that breaks down goals into actionable tasks using LLMs.
+  description: |
+    Full-stack app combining a React + Tailwind frontend with a Node/Express
+    backend. Uses an LLM to decompose user-entered goals into ordered tasks
+    and estimates effort. Auth via Clerk, data in Postgres.
+  tech: [React, Node.js, Postgres, OpenAI]
+  role: Creator
+  period: "2024"
+  links:
+    repo: https://github.com/yourhandle/ai-task-manager
+    demo: https://example.com
+  cover: /projects/task-manager.png
+  featured: true
+
+- slug: realtime-chat
+  title: Realtime Chat App
+  summary: WebSocket-based chat with rooms, typing indicators, and presence.
+  description: |
+    Practiced real-time architectures: a Go backend using gorilla/websocket,
+    Redis for pub/sub fan-out, and a React frontend. Supports 1k+ concurrent
+    connections per node.
+  tech: [Go, Redis, React, WebSocket]
+  role: Creator
+  period: "2023"
+  links:
+    repo: https://github.com/yourhandle/realtime-chat
+  cover: /projects/chat.png
+  featured: false

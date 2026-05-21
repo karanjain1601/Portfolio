@@ -1,0 +1,29 @@
+# Theme & site-wide config — edit freely
+site:
+  title: Your Name — Portfolio
+  description: Software engineer building useful things on the web.
+  url: https://yourname.vercel.app
+
+colors:
+  # Tailwind-friendly accent. Used for links, buttons, highlights.
+  accent: "#6366f1"   # indigo-500
+  accentForeground: "#ffffff"
+
+font:
+  heading: Geist, system-ui, sans-serif
+  body: Geist, system-ui, sans-serif
+
+animations:
+  intensity: high       # off | low | medium | high
+  smoothScroll: true
+  cursor: default       # default | magnetic
+
+three:
+  enabled: true         # turn off to disable 3D entirely
+  hero: particles       # particles | shader | none
+
+nav:
+  - { label: Home,       href: "/" }
+  - { label: Experience, href: "/experience" }
+  - { label: Projects,   href: "/projects" }
+  - { label: Contact,    href: "/contact" }

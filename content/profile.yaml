@@ -1,0 +1,24 @@
+name: Your Name
+tagline: Software Engineer · Builder of things
+photo: /me.jpg
+location: Your City, Country
+shortBio: |
+  I'm a software engineer who enjoys building thoughtful, fast,
+  and useful products. I care about clean code, good UX, and
+  shipping things that solve real problems.
+longBio: |
+  I'm a software engineer with a passion for full-stack development,
+  AI-powered applications, and crafting delightful user experiences.
+  I love working at the intersection of design and engineering.
+
+  Outside of work I enjoy reading, hiking, and tinkering with side projects.
+socials:
+  - label: GitHub
+    url: https://github.com/yourhandle
+    icon: github
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/yourhandle
+    icon: linkedin
+  - label: Email
+    url: mailto:you@example.com
+    icon: mail

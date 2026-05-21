@@ -1,0 +1,22 @@
+- company: Acme Corp
+  role: Software Engineer
+  period: 2024 — Present
+  location: Remote
+  logo: /logos/acme.svg
+  summary: Building AI-driven internal tooling and customer-facing features.
+  highlights:
+    - Led the migration of the legacy dashboard to Next.js, cutting LCP by 60%.
+    - Designed a RAG pipeline for support docs, reducing ticket volume by 18%.
+    - Mentored two junior engineers through their onboarding.
+  tech: [TypeScript, Next.js, Postgres, Python, Azure]
+
+- company: Startup Inc
+  role: Software Engineering Intern
+  period: Summer 2023
+  location: City, Country
+  logo: /logos/startup.svg
+  summary: Worked on the data ingestion platform powering analytics products.
+  highlights:
+    - Shipped a streaming Kafka consumer that handled 50k events/s.
+    - Wrote the team's first end-to-end test suite (Playwright).
+  tech: [Go, Kafka, Postgres, React]

@@ -1,0 +1,12 @@
+- school: Your University
+  degree: B.Sc. in Computer Science
+  period: 2020 — 2024
+  location: City, Country
+  details: |
+    Relevant coursework: Algorithms, Distributed Systems, Machine Learning,
+    Database Systems. GPA 3.8 / 4.0.
+- school: Your High School
+  degree: High School Diploma
+  period: 2018 — 2020
+  location: City, Country
+  details: Graduated with honors.
