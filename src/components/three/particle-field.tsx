@@ -1,8 +1,13 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+
+function seededUnit(index: number, seed: number) {
+  const x = Math.sin(index * 12.9898 + seed) * 43758.5453;
+  return x - Math.floor(x);
+}
 
 function Particles({ count = 1500, color = "#6366f1" }: { count?: number; color?: string }) {
   const ref = useRef<THREE.Points>(null);
@@ -10,10 +15,10 @@ function Particles({ count = 1500, color = "#6366f1" }: { count?: number; color?
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      // Distribute in a wide flat-ish cloud
-      arr[i * 3 + 0] = (Math.random() - 0.5) * 12;
-      arr[i * 3 + 1] = (Math.random() - 0.5) * 6;
-      arr[i * 3 + 2] = (Math.random() - 0.5) * 6;
+      // Deterministic pseudo-random distribution to keep renders pure.
+      arr[i * 3 + 0] = (seededUnit(i, 1.23) - 0.5) * 12;
+      arr[i * 3 + 1] = (seededUnit(i, 4.56) - 0.5) * 6;
+      arr[i * 3 + 2] = (seededUnit(i, 7.89) - 0.5) * 6;
     }
     return arr;
   }, [count]);
@@ -34,9 +39,6 @@ function Particles({ count = 1500, color = "#6366f1" }: { count?: number; color?
         <bufferAttribute
           attach="attributes-position"
           args={[positions, 3]}
-          count={positions.length / 3}
-          array={positions}
-          itemSize={3}
         />
       </bufferGeometry>
       <pointsMaterial

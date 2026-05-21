@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { useMotionConfig } from "../motion/config";
 
 // Lazy-load: Three.js bundle won't ship to non-3D users.
@@ -12,20 +12,17 @@ const ParticleField = dynamic(() => import("./particle-field"), {
 
 export function HeroBackground({ accent }: { accent: string }) {
   const { three, animations } = useMotionConfig();
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    if (!three.enabled || three.hero === "none") return;
-    if (animations.intensity === "off") return;
+  const show = useMemo(() => {
+    if (!three.enabled || three.hero === "none") return false;
+    if (animations.intensity === "off") return false;
+    if (typeof window === "undefined") return false;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+    if (reduced) return false;
 
     // Skip on low-end devices
     const cores = navigator.hardwareConcurrency ?? 4;
-    if (cores < 4) return;
-
-    setShow(true);
+    return cores >= 4;
   }, [three.enabled, three.hero, animations.intensity]);
 
   if (!show) return null;

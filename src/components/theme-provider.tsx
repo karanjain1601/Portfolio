@@ -9,12 +9,10 @@ const Ctx = createContext<{ theme: Theme; toggle: () => void }>({
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-
-  useEffect(() => {
-    const stored = (localStorage.getItem("theme") as Theme | null) ?? "dark";
-    setTheme(stored);
-  }, []);
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === "undefined") return "dark";
+    return (localStorage.getItem("theme") as Theme | null) ?? "dark";
+  });
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
