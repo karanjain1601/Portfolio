@@ -1,8 +1,8 @@
 # Theme & site-wide config — edit freely
 site:
-  title: Your Name — Portfolio
-  description: Software engineer building useful things on the web.
-  url: https://yourname.vercel.app
+  title: Karan Jain — Portfolio
+  description: Software engineer building interesting things on the web.
+  url: https://karanjain.vercel.app
 
 colors:
   # Tailwind-friendly accent. Used for links, buttons, highlights.

@@ -21,6 +21,8 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const chatApiBaseUrl = process.env.NEXT_PUBLIC_CHAT_API_URL;
+
   return (
     <html
       lang="en"
@@ -45,7 +47,7 @@ export default function RootLayout({
               <PageTransition>{children}</PageTransition>
             </main>
             <Footer name={profile.name} socials={profile.socials} />
-            <ChatLauncher name={profile.name} />
+            <ChatLauncher name={profile.name} apiBaseUrl={chatApiBaseUrl} />
           </MotionConfigProvider>
         </ThemeProvider>
       </body>

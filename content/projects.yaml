@@ -9,37 +9,74 @@
   role: Solo
   period: "2026"
   links:
-    repo: https://github.com/yourhandle/portfolio
+    repo: https://github.com/karanjain1601/Portfolio
   cover: /projects/portfolio.png
   featured: true
 
-- slug: ai-task-manager
-  title: AI Task Manager
-  summary: A productivity app that breaks down goals into actionable tasks using LLMs.
+- slug: chessgoat
+  title: ChessGOAT
+  summary: A modular chess engine playground combining classical search, RL-ready agents, and a playable UI.
   description: |
-    Full-stack app combining a React + Tailwind frontend with a Node/Express
-    backend. Uses an LLM to decompose user-entered goals into ordered tasks
-    and estimates effort. Auth via Clerk, data in Postgres.
-  tech: [React, Node.js, Postgres, OpenAI]
-  role: Creator
-  period: "2024"
+    Built in Python with a clean architecture for chess experimentation across multiple engine styles.
+    Includes random, greedy, negamax (alpha-beta), and MCTS engines, plus RL agent abstractions and board encoding.
+    Ships with a pygame interface, CLI arena benchmarking, perft validation, and a UCI adapter for external chess GUIs.
+  tech: [Python, python-chess, pygame, PyTorch, pytest]
+  role: Solo
+  period: "2026"
   links:
-    repo: https://github.com/yourhandle/ai-task-manager
-    demo: https://example.com
-  cover: /projects/task-manager.png
+    repo: https://github.com/karanjain1601/ChessGOAT
+  cover: /projects/chessgoat.png
   featured: true
 
-- slug: realtime-chat
-  title: Realtime Chat App
-  summary: WebSocket-based chat with rooms, typing indicators, and presence.
+- slug: dashfolio
+  title: DashFolio
+  summary: A full-stack personal trading dashboard for equities, mutual funds, F&O, and crypto with live alerts and multi-agent AI analysis.
   description: |
-    Practiced real-time architectures: a Go backend using gorilla/websocket,
-    Redis for pub/sub fan-out, and a React frontend. Supports 1k+ concurrent
-    connections per node.
-  tech: [Go, Redis, React, WebSocket]
-  role: Creator
-  period: "2023"
+    Built with Next.js 14, TypeScript, Tailwind CSS, and FastAPI.
+    Tracks portfolio transactions across asset classes with precise Decimal-based P&L.
+    Includes live quotes, candlestick charts, NSE option chain data, technical indicators, and watchlist alerts via WebSocket and Telegram.
+    Uses APScheduler for background jobs, SQLite for persistence, and local Ollama-powered multi-agent insights for portfolio, risk, and sentiment analysis.
+  tech: [Next.js, TypeScript, Tailwind CSS, FastAPI, SQLModel, SQLite, APScheduler, Ollama, TradingView]
+  role: Solo
+  period: "2026"
   links:
-    repo: https://github.com/yourhandle/realtime-chat
-  cover: /projects/chat.png
-  featured: false
+    repo: https://github.com/karanjain1601/DashFolio
+  cover: /projects/dashfolio.png
+  featured: true
+
+- slug: cubix-ai
+  title: CUBIX AI
+  summary: A Python-based Rubik's Cube simulator and visual solver that compares multiple solving algorithms and heuristics.
+  description: |
+    Built with Python and Pygame, with NumPy for state operations and OpenPyXL for result handling.
+    Simulates a 3x3 cube, supports random scramble generation, and renders a 2D interactive GUI.
+    Includes multiple solving approaches: Kociemba (twophase), Layer-by-Layer, BFS, Better BFS, A*, IDA*, and Mini.
+    Implements custom cube state representation, move parsing/cleaning, Manhattan-distance heuristic utilities, and solution path translation for algorithm benchmarking.
+  tech: [Python, Pygame, NumPy, Kociemba twophase, Search Algorithms, Heuristics]
+  role: Solo
+  period: "2026"
+  links:
+    repo: https://github.com/karanjain1601/CUBIX-AI_cube_solving_algorithms
+  cover: /projects/cubix-ai.png
+  featured: true
+
+- slug: gangsofbots
+  title: GangsOfBots
+  summary: A full-stack autonomous AI software organization that turns requirements into reviewed artifacts, code, tests, and release bundles with human approval gates.
+  description: |
+    Built with Next.js 14, TypeScript, Tailwind CSS, and FastAPI.
+    Orchestrates six AI agents (BA, Architect, Developer, QA, DevOps, and Manager) in a stage-based workflow with typed JSON outputs and validation.
+    Supports real-time token streaming over WebSocket, role-based auth (viewer/reviewer/admin), audit trails, analytics, and organizational memory.
+    Uses SQLite persistence, Alembic migrations, and Ollama-powered local LLMs for agent execution.
+    Includes approval-driven git release bundle generation and comprehensive backend/frontend test coverage.
+  tech: [Next.js, TypeScript, Tailwind CSS, FastAPI, Pydantic, SQLite, Alembic, WebSocket, Ollama, Zustand]
+  role: Solo
+  period: "2026"
+  links:
+    repo: https://github.com/karanjain1601/GangsOfBots
+  cover: /projects/gangsofbots.png
+  featured: true
+
+
+
+

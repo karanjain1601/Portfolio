@@ -1,13 +1,30 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { MessageCircle, X, Construction } from "lucide-react";
 import { cn } from "@/lib/cn";
 
-export function ChatLauncher({ name }: { name: string }) {
+export function ChatLauncher({
+  name,
+  apiBaseUrl,
+}: {
+  name: string;
+  apiBaseUrl?: string;
+}) {
   const [open, setOpen] = useState(false);
   const reduced = useReducedMotion();
+  const hasBackend = Boolean(apiBaseUrl);
+  const backendHost = apiBaseUrl
+    ? (() => {
+        try {
+          return new URL(apiBaseUrl).host;
+        } catch {
+          return apiBaseUrl;
+        }
+      })()
+    : null;
 
   // Close on Escape
   useEffect(() => {
@@ -125,14 +142,19 @@ export function ChatLauncher({ name }: { name: string }) {
                   This is where you&apos;ll be able to ask questions about my
                   projects, experience, and background. Coming soon.
                 </p>
+                <p className="mt-4 text-xs text-muted-foreground max-w-[32ch]">
+                  {hasBackend
+                    ? `Backend configured: ${backendHost}`
+                    : "Backend not configured. Set NEXT_PUBLIC_CHAT_API_URL to connect your Python chatbot API."}
+                </p>
                 <p className="mt-6 text-xs text-muted-foreground">
                   In the meantime, feel free to{" "}
-                  <a
+                  <Link
                     href="/contact"
                     className="text-accent hover:underline underline-offset-2"
                   >
                     reach out directly
-                  </a>
+                  </Link>
                   .
                 </p>
               </div>
