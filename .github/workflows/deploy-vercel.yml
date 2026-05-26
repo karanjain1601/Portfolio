@@ -25,6 +25,7 @@ jobs:
     env:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      STATIC_EXPORT: "false"
       NEXT_PUBLIC_CHAT_API_URL: ${{ secrets.NEXT_PUBLIC_CHAT_API_URL }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       OPENROUTER_CHAT_MODEL: ${{ secrets.OPENROUTER_CHAT_MODEL }}
@@ -60,35 +61,9 @@ jobs:
         run: |
           set -euo pipefail
 
-          EXTRA_ARGS=()
-          add_env_if_present() {
-            local key="$1"
-            local value="${!key:-}"
-            if [ -n "$value" ]; then
-              EXTRA_ARGS+=(--build-env "$key=$value")
-              EXTRA_ARGS+=(--env "$key=$value")
-            fi
-          }
-
-          add_env_if_present NEXT_PUBLIC_CHAT_API_URL
-          add_env_if_present OPENROUTER_API_KEY
-          add_env_if_present OPENROUTER_CHAT_MODEL
-          add_env_if_present OPENROUTER_EMBED_MODEL
-          add_env_if_present OPENROUTER_BASE_URL
-          add_env_if_present OPENROUTER_REFERER
-          add_env_if_present OPENROUTER_APP_NAME
-          add_env_if_present QDRANT_URL
-          add_env_if_present QDRANT_API_KEY
-          add_env_if_present QDRANT_COLLECTION
-          add_env_if_present RAG_TOP_K
-          add_env_if_present RAG_ADMIN_TOKEN
-
-          EXTRA_ARGS+=(--build-env STATIC_EXPORT=false)
-          EXTRA_ARGS+=(--env STATIC_EXPORT=false)
-
           vercel pull --yes --environment=preview --token "$VERCEL_TOKEN"
-          vercel build --token "$VERCEL_TOKEN" "${EXTRA_ARGS[@]}"
-          vercel deploy --prebuilt --token "$VERCEL_TOKEN" "${EXTRA_ARGS[@]}"
+          vercel build --token "$VERCEL_TOKEN"
+          vercel deploy --prebuilt --token "$VERCEL_TOKEN"
 
   deploy-production:
     name: Deploy Production
@@ -98,6 +73,7 @@ jobs:
     env:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      STATIC_EXPORT: "false"
       NEXT_PUBLIC_CHAT_API_URL: ${{ secrets.NEXT_PUBLIC_CHAT_API_URL }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       OPENROUTER_CHAT_MODEL: ${{ secrets.OPENROUTER_CHAT_MODEL }}
@@ -133,32 +109,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          EXTRA_ARGS=()
-          add_env_if_present() {
-            local key="$1"
-            local value="${!key:-}"
-            if [ -n "$value" ]; then
-              EXTRA_ARGS+=(--build-env "$key=$value")
-              EXTRA_ARGS+=(--env "$key=$value")
-            fi
-          }
-
-          add_env_if_present NEXT_PUBLIC_CHAT_API_URL
-          add_env_if_present OPENROUTER_API_KEY
-          add_env_if_present OPENROUTER_CHAT_MODEL
-          add_env_if_present OPENROUTER_EMBED_MODEL
-          add_env_if_present OPENROUTER_BASE_URL
-          add_env_if_present OPENROUTER_REFERER
-          add_env_if_present OPENROUTER_APP_NAME
-          add_env_if_present QDRANT_URL
-          add_env_if_present QDRANT_API_KEY
-          add_env_if_present QDRANT_COLLECTION
-          add_env_if_present RAG_TOP_K
-          add_env_if_present RAG_ADMIN_TOKEN
-
-          EXTRA_ARGS+=(--build-env STATIC_EXPORT=false)
-          EXTRA_ARGS+=(--env STATIC_EXPORT=false)
-
           vercel pull --yes --environment=production --token "$VERCEL_TOKEN"
-          vercel build --prod --token "$VERCEL_TOKEN" "${EXTRA_ARGS[@]}"
-          vercel deploy --prebuilt --prod --token "$VERCEL_TOKEN" "${EXTRA_ARGS[@]}"
+          vercel build --prod --token "$VERCEL_TOKEN"
+          vercel deploy --prebuilt --prod --token "$VERCEL_TOKEN"
