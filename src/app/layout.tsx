@@ -9,6 +9,7 @@ import { SmoothScroll } from "@/components/motion/smooth-scroll";
 import { PageTransition } from "@/components/motion/page-transition";
 import { ChatLauncher } from "@/components/chat/chat-launcher";
 import { profile, theme } from "@/config/loader";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -50,6 +51,7 @@ export default function RootLayout({
             <ChatLauncher name={profile.name} apiBaseUrl={chatApiBaseUrl} />
           </MotionConfigProvider>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
